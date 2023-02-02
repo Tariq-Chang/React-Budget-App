@@ -9,11 +9,25 @@
     padding:10px;
 }
 
-.header > p{
+.header > p, select{
     padding:20px;
     border-radius:5px;
-    width:200px;
+    width:280px;
     margin:5px;
+    border:none;
+}
+
+.increment, .decrement{
+    width:30px;
+    height:30px;
+    padding:5px;
+    background:white;
+    color:black;
+    text-align:center;
+}
+.increment:hover, .decrement:hover{
+    background:transparent;
+    border:3px solid white;
 }
 .header > :nth-child(1){
     background:lightgreen;
@@ -32,4 +46,11 @@
     border-radius:2px;
     width:85px;
     margin-left:5px;
+    height:30px;
+}
+
+.currency{
+    background: rgb(11, 131, 7);
+    color:white;
+    font-size:1rem;
 }

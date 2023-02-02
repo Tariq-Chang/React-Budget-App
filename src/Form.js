@@ -1,37 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { budgetAllocation } from "./features/budgetSlice";
 import "./Form.css";
-function Form() {
+function Form({ records }) {
+  const [departmentId, setDepartmentId] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(budgetAllocation({ departmentId, amount }));
+  };
   return (
     <div className="form">
       <label>Department</label>
       <select class="options department__options">
-        <option class="option" value="choose" disabled>
-          Choose..
-        </option>
-        <option class="option" value="marketing">
-          Marketing
-        </option>
-        <option class="option" value="finance">
-          Finance
-        </option>
-        <option class="option" value="sales">
-          Sales
-        </option>
-        <option class="option" value="human resource">
-          Human Resource
-        </option>
+        {records.map((record, id) => {
+          return (
+            <option
+              className="option"
+              value={departmentId}
+              onClick={(e) => setDepartmentId(id)}
+            >
+              {record.department}
+            </option>
+          );
+        })}
       </select>
       <label>Allocation</label>
       <select class="options allocation__options">
         <option class="option" value="add">
           Add
         </option>
-        <option class="option" value="remove">
-          Remove
-        </option>
       </select>
-      <input type="number" name="amount" id="amount" />
-      <button type="submit" id="submit">
+      <input
+        type="number"
+        name="amount"
+        id="amount"
+        value={amount}
+        onChange={(e) => {
+          if (isNaN(amount)) {
+            alert("Please input only numbers");
+          } else {
+            e.preventDefault();
+            setAmount(parseFloat(e.target.value));
+          }
+        }}
+      />
+      <button type="submit" id="submit" onClick={handleSubmit}>
         submit
       </button>
     </div>

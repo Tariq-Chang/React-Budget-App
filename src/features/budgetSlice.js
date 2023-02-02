@@ -3,27 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   records: [
     {
-      id: 1,
+      id: 0,
       department: "Human Resource",
       allocation: 100,
     },
     {
-      id: 2,
+      id: 1,
       department: "Finance",
       allocation: 200,
     },
     {
-      id: 3,
+      id: 2,
       department: "IT",
       allocation: 100,
     },
     {
-      id: 4,
+      id: 3,
       department: "Marketing",
       allocation: 400,
     },
     {
-      id: 5,
+      id: 4,
       department: "Designer",
       allocation: 50,
     },
@@ -40,10 +40,6 @@ export const budgetSlice = createSlice({
   reducers: {
     incrementBudgetBy10: (state, action) => {
       const { allocation, id } = action.payload;
-      // let sum = 0;
-      // const totalSum = state.records.map((record) => {
-      //   return (sum += record.allocation);
-      // });
       state.records.map((record) => {
         if (record.id === id) {
           if (state.spent + 10 <= state.totalBudget) {
@@ -52,6 +48,20 @@ export const budgetSlice = createSlice({
             state.remaining = state.remaining - 10;
           } else {
             alert("Spent amount cannot be greater than totalBudget");
+          }
+        }
+      });
+    },
+    decrementBudgetBy10: (state, action) => {
+      const { allocation, id } = action.payload;
+      state.records.map((record) => {
+        if (record.id === id) {
+          if (state.spent - 10 >= 0 && record.allocation - 10 >= 0) {
+            record.allocation = allocation - 10;
+            state.spent = state.spent - 10;
+            state.remaining = state.remaining + 10;
+          } else {
+            alert("amount cannot be less than 0");
           }
         }
       });
@@ -70,15 +80,39 @@ export const budgetSlice = createSlice({
 
     updateTotalBudget: (state, action) => {
       if (state.spent <= action.payload.value) {
-        state.totalBudget = action.payload.value;
-        state.remaining = state.totalBudget - state.spent;
+        if (action.payload.value <= 20000) {
+          state.totalBudget = action.payload.value;
+          state.remaining = state.totalBudget - state.spent;
+        } else {
+          alert("Budget amount cannot be more than 20000.");
+        }
       } else {
         alert("Total budget cannot be less than total amount spent");
       }
+    },
+
+    budgetAllocation: (state, action) => {
+      const { amount, departmentId } = action.payload;
+      state.records.map((record) => {
+        if (record.id === departmentId) {
+          if (state.spent + amount <= state.totalBudget) {
+            record.allocation += amount;
+            state.spent += amount;
+            state.remaining -= amount;
+          } else {
+            alert("Allocation cannot exceed from totalBudget");
+          }
+        }
+      });
     },
   },
 });
 
 export default budgetSlice.reducer;
-export const { incrementBudgetBy10, deleteRecord, updateTotalBudget } =
-  budgetSlice.actions;
+export const {
+  incrementBudgetBy10,
+  deleteRecord,
+  updateTotalBudget,
+  budgetAllocation,
+  decrementBudgetBy10,
+} = budgetSlice.actions;
