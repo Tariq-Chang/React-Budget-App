@@ -7,10 +7,11 @@ function Records() {
   return (
     <div className="records">
       <table>
-        <tr class="table__row">
+        <tr className="table__row">
           <th>Department</th>
           <th>Allocation</th>
           <th>Increase By 10</th>
+          <th>Decrement By 10</th>
           <th>Delete</th>
         </tr>
         <div className="records__main">

@@ -6,3 +6,6 @@
     margin-top:50px;
 }
 
+table :first-child{
+    width:700px;
+}
