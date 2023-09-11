@@ -1,0 +1,18 @@
+{
+    "hello-world": "Hello, World!",
+    "budget": "Budget",
+    "spent": "Spent",
+    "remaining": "Remaining",
+    "department": "Department",
+    "allocation": "Allocation",
+    "increase-by-10": "Increase By 10",
+    "decrease-by-10": "Decrease By 10",
+    "delete": "Delete",
+    "human-resource":"Human Resource",
+    "finance": "Finance",
+    "it": "IT",
+    "marketing": "Marketing",
+    "designer": "Designer",
+    "submit": "Submit",
+    "urdu": "Urdu"
+}

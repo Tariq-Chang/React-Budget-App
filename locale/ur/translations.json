@@ -1,0 +1,18 @@
+{
+    "hello-world": "ہیلو، دنیا!",
+    "budget": "بجٹ",
+    "spent": "خرچ کیا",
+    "remaining": "باقی",
+    "department": "شعبہ",
+    "allocation": "مختص کرنے",
+    "increase-by-10": "10 کا اضافہ",
+    "decrease-by-10": "10 کی کمی",
+    "delete": "حذف کریں",
+    "human-resource":"انسانی وسائل",
+    "finance": "مالیات",
+    "it": "انفارمیشن ٹیکنالوجی",
+    "marketing": "مارکیٹنگ",
+    "designer": "ڈیزائنر",
+    "submit": "جمع کرائیں",
+    "urdu": "اردو"
+}
