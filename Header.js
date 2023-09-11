@@ -44,15 +44,14 @@ function Header() {
         {t("remaining")}: {currentCurrency}
         <span id="remaining">{remainnig}</span>
       </p>
-      <select name="currency" className="currency">
+      <select name="currency" className="currency" onChange={(e) => {
+                dispatch(updateCurrentCurrency({ symbol: e.target.value }));
+              }}>
         {currencies.map((currency, id) => {
           return (
             <option
               value={currency.symbol}
               key={id}
-              onClick={() => {
-                dispatch(updateCurrentCurrency({ symbol: currency.symbol }));
-              }}
             >
               {currency.name}
             </option>
