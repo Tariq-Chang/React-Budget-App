@@ -38,9 +38,10 @@ function Form({ records }) {
         type="number"
         name="amount"
         id="amount"
+        placeholder="Amount"
         value={amount}
         onChange={(e) => {
-          if (isNaN(amount)) {
+          if (isNaN(e.target.value) ) {
             alert("Please input only numbers");
           } else {
             e.preventDefault();
